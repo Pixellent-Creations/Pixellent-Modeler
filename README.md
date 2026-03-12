@@ -15,6 +15,8 @@ To build and develop Pixellent Modeler on Windows (or any platform supported by 
    cmake -S . -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
    ```
 
+   The sample `main.cpp` constructs an `Application` object which in turn creates a `Window` and `Renderer` (GLAD is initialized there). The `Application::run()` method enters a loop clearing the screen each frame – you can start adding draw calls here.
+
 3. **Compile**
    ```sh
    cmake --build build --config Debug
@@ -31,7 +33,7 @@ To build and develop Pixellent Modeler on Windows (or any platform supported by 
 
 ---
 
-Continue developing by implementing core systems (windowing, rendering, scene management, etc.). Keep the code original and modular to make sharing with the 3D modeling community easy.
+Continue developing by implementing core systems (windowing, rendering, scene management, etc.). A simple `Renderer` class already exists; it initializes GLAD and clears the screen. Keep the code original and modular to make sharing with the 3D modeling community easy.
 
 ## 📦 Suggested Libraries
 In the early stages you’ll want to pull in a few widely‑used dependencies. Here’s a starter set that covers most basic needs:
