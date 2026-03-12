@@ -1,7 +1,8 @@
 #include <iostream>
+#include "PixellentModeler/Application.hpp"
 
 int main() {
-    std::cout << "Pixellent Modeler starting..." << std::endl;
-    // TODO: initialize application, load configuration, setup window/context
+    PixellentModeler::Application app;
+    app.run();
     return 0;
 }

@@ -14,4 +14,33 @@ file(GLOB_RECURSE SOURCES "${PROJECT_SOURCE_DIR}/src/*.cpp")
 add_executable(${PROJECT_NAME} ${SOURCES})
 
 # For now we don't link external libraries; they can be added later
-# target_link_libraries(${PROJECT_NAME} PRIVATE glfw glm glew ...)
+# Example of using FetchContent to grab a couple of common libs:
+include(FetchContent)
+
+FetchContent_Declare(
+  glfw
+  GIT_REPOSITORY https://github.com/glfw/glfw.git
+  GIT_TAG        3.3.8
+)
+FetchContent_MakeAvailable(glfw)
+
+FetchContent_Declare(
+  glm
+  GIT_REPOSITORY https://github.com/g-truc/glm.git
+  GIT_TAG        0.9.9.8
+)
+FetchContent_MakeAvailable(glm)
+
+FetchContent_Declare(
+  glad
+  GIT_REPOSITORY https://github.com/Dav1dde/glad.git
+  GIT_TAG        v0.1.36
+)
+FetchContent_MakeAvailable(glad)
+
+# Link libraries to the executable
+target_link_libraries(${PROJECT_NAME} PRIVATE glfw glm glad)
+
+# For GLFW we also need to define GLFW_INCLUDE_NONE to avoid downcasting
+# and ensure linking to the proper system libraries on Windows
+target_compile_definitions(${PROJECT_NAME} PRIVATE GLFW_INCLUDE_NONE)
