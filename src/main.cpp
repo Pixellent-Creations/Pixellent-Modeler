@@ -1,11 +1,16 @@
 #include <iostream>
 #include "PixellentModeler/Window.hpp"
+#include <glad/glad.h>
 #include <glm/glm.hpp>
 
 int main() {
     std::cout << "Pixellent Modeler starting..." << std::endl;
 
     PixellentModeler::Window window(640, 480, "Pixellent Test");
+    // print OpenGL info if loaded
+    std::cout << "GL vendor: " << glGetString(GL_VENDOR) << "\n";
+    std::cout << "GL renderer: " << glGetString(GL_RENDERER) << "\n";
+    std::cout << "GL version: " << glGetString(GL_VERSION) << "\n";
 
     // simple glm usage
     glm::vec3 v(1.0f, 2.0f, 3.0f);

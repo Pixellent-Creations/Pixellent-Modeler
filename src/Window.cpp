@@ -1,9 +1,11 @@
 #include "PixellentModeler/Window.hpp"
+#include <glad/glad.h>
 #include <iostream>
 
 namespace PixellentModeler {
 
 Window::Window(int width, int height, const char* title) {
+    std::cout << "Initializing GLFW window" << std::endl;
     if (!glfwInit()) {
         std::cerr << "Failed to initialize GLFW" << std::endl;
         return;
@@ -24,6 +26,11 @@ Window::Window(int width, int height, const char* title) {
     }
 
     glfwMakeContextCurrent(m_window);
+
+    // initialize GLAD after the context is current
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
+        std::cerr << "Failed to initialize GLAD" << std::endl;
+    }
 }
 
 Window::~Window() {

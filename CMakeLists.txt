@@ -31,8 +31,15 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(glm)
 
+FetchContent_Declare(
+  glad
+  GIT_REPOSITORY https://github.com/Dav1dde/glad.git
+  GIT_TAG        v0.1.36
+)
+FetchContent_MakeAvailable(glad)
+
 # Link libraries to the executable
-target_link_libraries(${PROJECT_NAME} PRIVATE glfw glm)
+target_link_libraries(${PROJECT_NAME} PRIVATE glfw glm glad)
 
 # For GLFW we also need to define GLFW_INCLUDE_NONE to avoid downcasting
 # and ensure linking to the proper system libraries on Windows

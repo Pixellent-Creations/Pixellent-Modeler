@@ -39,7 +39,7 @@ In the early stages you’ll want to pull in a few widely‑used dependencies. H
 * **Window/input/context:** **GLFW** (used in examples) or SDL2
 * **Math:** **GLM** (included example) or Eigen
 * **Model import/export:** Assimp (later)
-* **Rendering helpers:** GLEW/GLAD
+* **Rendering helpers:** **GLAD** (used below) or GLEW
 * **GUI:** Dear ImGui (for tools/UI) or Qt (for full application)
 * **Image IO:** stb_image / stb_image_write
 * **Unit testing:** Catch2 or GoogleTest
