@@ -33,3 +33,44 @@ To build and develop Pixellent Modeler on Windows (or any platform supported by 
 
 Continue developing by implementing core systems (windowing, rendering, scene management, etc.). Keep the code original and modular to make sharing with the 3D modeling community easy.
 
+## 📦 Suggested Libraries
+In the early stages you’ll want to pull in a few widely‑used dependencies. Here’s a starter set that covers most basic needs:
+
+* **Window/input/context:** **GLFW** (used in examples) or SDL2
+* **Math:** **GLM** (included example) or Eigen
+* **Model import/export:** Assimp (later)
+* **Rendering helpers:** GLEW/GLAD
+* **GUI:** Dear ImGui (for tools/UI) or Qt (for full application)
+* **Image IO:** stb_image / stb_image_write
+* **Unit testing:** Catch2 or GoogleTest
+
+You can add more as the project grows (CGAL for geometry, Python/Lua for scripting, Bullet for physics, etc.).
+
+### Adding libraries with CMake
+The top‑level `CMakeLists.txt` already compiles all `.cpp` files, but you’ll eventually need to link against dependencies. One convenient approach is `FetchContent`:
+
+```cmake
+include(FetchContent)
+
+# Example: fetch GLFW and GLM automatically
+FetchContent_Declare(
+  glfw
+  GIT_REPOSITORY https://github.com/glfw/glfw.git
+  GIT_TAG        3.3.8
+)
+FetchContent_MakeAvailable(glfw)
+
+FetchContent_Declare(
+  glm
+  GIT_REPOSITORY https://github.com/g-truc/glm.git
+  GIT_TAG        0.9.9.8
+)
+FetchContent_MakeAvailable(glm)
+
+# Later, link libraries to your executable
+# target_link_libraries(${PROJECT_NAME} PRIVATE glfw glm)
+```
+
+Adjust tags or use system packages/vcpkg as preferred.
+
+
