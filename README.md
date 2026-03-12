@@ -15,7 +15,13 @@ To build and develop Pixellent Modeler on Windows (or any platform supported by 
    cmake -S . -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
    ```
 
-   The sample `main.cpp` constructs an `Application` object which in turn creates a `Window` and `Renderer` (GLAD is initialized there). The `Application::run()` method enters a loop clearing the screen each frame – you can start adding draw calls here.
+   The sample `main.cpp` constructs an `Application` object which in turn creates a `Window`, `Renderer`, and a minimal `Scene` containing a `Camera`. The renderer now:
+
+1. Initializes GLAD and basic OpenGL state.
+2. Creates a simple coloured triangle (VAO/VBO) and compiles a basic shader.
+3. Each frame it computes a model‑view‑projection matrix from the scene's camera and draws the triangle.
+
+The camera's aspect ratio is updated automatically when the window is resized, and the renderer adjusts its viewport accordingly. You can extend `Scene` with more objects, move the camera, or replace the triangle with real meshes.
 
 3. **Compile**
    ```sh
@@ -33,7 +39,15 @@ To build and develop Pixellent Modeler on Windows (or any platform supported by 
 
 ---
 
-Continue developing by implementing core systems (windowing, rendering, scene management, etc.). A simple `Renderer` class already exists; it initializes GLAD and clears the screen. Keep the code original and modular to make sharing with the 3D modeling community easy.
+Continue developing by implementing core systems (windowing, rendering, scene management, etc.). The codebase now includes:
+
+* `Window` – GLFW wrapper.
+* `Renderer` – initializes GLAD, sets up a triangle VAO/VBO, and draws with a simple shader.
+* `Shader` – utility for compiling/linking GLSL programs.
+* `Scene` + `Camera` – basic scene container with a perspective camera.
+* `Application` – high‑level class that ties everything together and drives the main loop.
+
+Each of the first three milestones (GLAD loader, triangle rendering, camera/scene) has been implemented. Extend from here by adding mesh loading, input handling, and more elaborate scene graph features.
 
 ## 📦 Suggested Libraries
 In the early stages you’ll want to pull in a few widely‑used dependencies. Here’s a starter set that covers most basic needs:
