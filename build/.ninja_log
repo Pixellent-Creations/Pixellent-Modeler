@@ -55,7 +55,7 @@
 36902	140495	7972813100000000	CMakeFiles/PixellentModeler.dir/src/Mesh/MeshBuffer.cpp.obj	612a03d7e8ed1c71
 35615	141620	7972813080000000	CMakeFiles/PixellentModeler.dir/src/IO/ObjExporter.cpp.obj	6ed4df0274238da6
 37602	142849	7972813100000000	CMakeFiles/PixellentModeler.dir/src/Mesh/MeshPrimitives.cpp.obj	1f777af8e9c87e3b
-34114	144378	7972813080000000	CMakeFiles/PixellentModeler.dir/src/Core/Application.cpp.obj	eade9e8fa6b6c21e
+729	28915	7972815780000000	CMakeFiles/PixellentModeler.dir/src/Core/Application.cpp.obj	eade9e8fa6b6c21e
 39995	145952	7972813140000000	CMakeFiles/PixellentModeler.dir/src/Rendering/ShaderLibrary.cpp.obj	2b6721f37c0ea8c7
 35872	146925	7972813100000000	CMakeFiles/PixellentModeler.dir/src/IO/ObjImporter.cpp.obj	55938c122dc6af0c
 136831	148194	7972814100000000	CMakeFiles/PixellentModeler.dir/src/UI/MenuBar.cpp.obj	adfd3abfa1a413
@@ -79,11 +79,9 @@
 59687	172317	7972813320000000	CMakeFiles/PixellentModeler.dir/src/Tools/ScaleTool.cpp.obj	15f824cc5cd37cb7
 39559	178721	7972813120000000	CMakeFiles/PixellentModeler.dir/src/Rendering/Shader.cpp.obj	1ced14d51b6701e4
 141876	190504	7972814160000000	CMakeFiles/PixellentModeler.dir/src/UI/ToolbarPanel.cpp.obj	2db31f33a6f8b78b
-144430	191483	7972814180000000	CMakeFiles/PixellentModeler.dir/src/UI/ViewportPanel.cpp.obj	c7a58e884e94a338
+1479	28706	7972815800000000	CMakeFiles/PixellentModeler.dir/src/UI/ViewportPanel.cpp.obj	c7a58e884e94a338
 138068	193659	7972814120000000	CMakeFiles/PixellentModeler.dir/src/UI/PropertiesPanel.cpp.obj	6c9127b0d1724a4e
 817	26681	7972815780000000	CMakeFiles/PixellentModeler.dir/src/UI/SceneHierarchyPanel.cpp.obj	17c0459ac21dd1ae
-1479	28706	7972815800000000	CMakeFiles/PixellentModeler.dir/src/UI/ViewportPanel.cpp.obj	c7a58e884e94a338
-729	28915	7972815780000000	CMakeFiles/PixellentModeler.dir/src/Core/Application.cpp.obj	eade9e8fa6b6c21e
 1335	29316	7972815800000000	CMakeFiles/PixellentModeler.dir/src/UI/UIManager.cpp.obj	d8a831bdbc1a3c3f
 757	30865	7972815780000000	CMakeFiles/PixellentModeler.dir/src/Rendering/Renderer.cpp.obj	e1898060fb5faa19
 785	5101	7972816280000000	CMakeFiles/PixellentModeler.dir/src/UI/StatusBar.cpp.obj	a12c4aed4c615648

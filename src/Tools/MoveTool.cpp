@@ -1,6 +1,11 @@
 #include "PixellentModeler/Tools/MoveTool.hpp"
 #include "PixellentModeler/Selection/SelectionManager.hpp"
 #include "PixellentModeler/Scene/Camera.hpp"
+#include "PixellentModeler/Scene/Scene.hpp"
+#include "PixellentModeler/Scene/Entity.hpp"
+#include "PixellentModeler/Scene/TransformComponent.hpp"
+#include "PixellentModeler/Core/TransformCommand.hpp"
+#include "PixellentModeler/Core/CommandHistory.hpp"
 #include <GLFW/glfw3.h>
 #include <glm/gtc/matrix_transform.hpp>
 #include <cmath>
@@ -42,11 +47,12 @@ static float snapValue(float value, float snapSize) {
 void MoveTool::onMouseDown(const ToolContext& ctx, int button, int mods) {
     if (button != GLFW_MOUSE_BUTTON_LEFT) return;
     if (!ctx.selection || ctx.selection->current().isEmpty()) return;
-    if (!ctx.camera) return;
+    if (!ctx.scene || !ctx.camera) return;
 
     // Update gizmo position to the selection centroid
-    // (For now, use the transform of the primary selected entity)
     m_gizmo.setMode(GizmoMode::Translate);
+    glm::vec3 center = ctx.selection->selectionCenter(*ctx.scene);
+    m_gizmo.setPosition(center);
 
     // Compute ray from mouse position
     glm::mat4 invProj = glm::inverse(ctx.camera->projection());
@@ -99,37 +105,75 @@ void MoveTool::onMouseMove(const ToolContext& ctx) {
     glm::vec3 newPos = m_gizmo.position() + delta;
     m_gizmo.setPosition(newPos);
 
+    // Apply translation to all selected entities
+    if (ctx.scene && ctx.selection) {
+        const auto& selectedEntities = ctx.selection->current().entities;
+        for (EntityID entityId : selectedEntities) {
+            Entity* entity = ctx.scene->getEntity(entityId);
+            if (!entity) continue;
+
+            auto* tc = entity->getComponent<TransformComponent>();
+            if (!tc) continue;
+
+            tc->position += delta;
+        }
+    }
+
     // Update the previous ray for the next frame
     m_prevRayOrigin = rayOrigin;
     m_prevRayDir = rayDir;
-
-    // TODO: Apply the translation to selected entities' transforms once
-    // the Transform component is implemented.
 }
 
 void MoveTool::onMouseUp(const ToolContext& ctx, int button, int mods) {
     if (button != GLFW_MOUSE_BUTTON_LEFT) return;
 
-    if (m_dragging) {
-        // TODO: Create a TransformCommand and push it to ctx.commands
-        // so the move can be undone/redone.
-        // glm::vec3 totalDelta = m_gizmo.position() - m_originalPosition;
+    if (m_dragging && ctx.scene && ctx.selection && ctx.commands) {
+        // Calculate total delta from move
+        glm::vec3 totalDelta = m_gizmo.position() - m_originalPosition;
+
+        // Only create command if there was actual movement
+        if (glm::length(totalDelta) > 0.001f) {
+            std::vector<TransformCommand::EntityTransform> transforms;
+
+            // Get all selected entities and store their transforms
+            const auto& selectedEntities = ctx.selection->current().entities;
+            for (EntityID entityId : selectedEntities) {
+                Entity* entity = ctx.scene->getEntity(entityId);
+                if (!entity) continue;
+
+                auto* tc = entity->getComponent<TransformComponent>();
+                if (!tc) continue;
+
+                TransformCommand::EntityTransform t;
+                t.id = entityId;
+                t.oldPosition = tc->position - totalDelta;  // original before this operation
+                t.oldRotation = tc->rotation;
+                t.oldScale = tc->scale;
+                t.newPosition = tc->position;  // current (already updated during drag)
+                t.newRotation = tc->rotation;
+                t.newScale = tc->scale;
+
+                transforms.push_back(t);
+            }
+
+            if (!transforms.empty()) {
+                auto cmd = std::make_shared<TransformCommand>(ctx.scene, transforms);
+                ctx.commands->execute(cmd);
+            }
+        }
     }
 
     m_dragging = false;
     m_activeAxis = -1;
-    (void)ctx;
     (void)mods;
 }
 
 void MoveTool::onRender(const ToolContext& ctx) {
     if (!ctx.selection || ctx.selection->current().isEmpty()) return;
+    if (!ctx.renderer) return;
 
-    // TODO: Render the translate gizmo (3 colored arrows: red=X, green=Y, blue=Z)
-    // at m_gizmo.position() using line rendering.
-    // This requires a line-drawing utility or immediate-mode GL rendering,
-    // which will be added when the Renderer supports debug line drawing.
-    (void)ctx;
+    // Render the translate gizmo
+    ctx.renderer->drawGizmo(m_gizmo.position(), static_cast<int>(GizmoMode::Translate), m_activeAxis);
 }
 
 } // namespace PixellentModeler

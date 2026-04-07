@@ -11,11 +11,16 @@ struct Material {
     glm::vec3 albedo{0.8f, 0.8f, 0.8f};
     float metallic = 0.0f;
     float roughness = 0.5f;
+    float aoStrength = 1.0f;
 
     std::shared_ptr<Texture> albedoMap;
     std::shared_ptr<Texture> normalMap;
     std::shared_ptr<Texture> metallicMap;
     std::shared_ptr<Texture> roughnessMap;
+    std::shared_ptr<Texture> aoMap;
+
+    // PBR shader selection
+    bool usePBR = false;
 };
 
 } // namespace PixellentModeler

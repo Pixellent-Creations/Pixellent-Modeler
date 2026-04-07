@@ -53,6 +53,9 @@ public:
 
     EntityID primaryEntity() const;
 
+    // Get the centroid of all selected entities
+    glm::vec3 selectionCenter(class Scene& scene) const;
+
 private:
     Selection m_selection;
     SelectionMode m_mode = SelectionMode::Object;

@@ -1,6 +1,11 @@
 #include "PixellentModeler/Tools/ScaleTool.hpp"
 #include "PixellentModeler/Selection/SelectionManager.hpp"
 #include "PixellentModeler/Scene/Camera.hpp"
+#include "PixellentModeler/Scene/Scene.hpp"
+#include "PixellentModeler/Scene/Entity.hpp"
+#include "PixellentModeler/Scene/TransformComponent.hpp"
+#include "PixellentModeler/Core/TransformCommand.hpp"
+#include "PixellentModeler/Core/CommandHistory.hpp"
 #include <GLFW/glfw3.h>
 #include <glm/gtc/matrix_transform.hpp>
 #include <cmath>
@@ -33,9 +38,11 @@ static float snapValue(float value, float snapSize) {
 void ScaleTool::onMouseDown(const ToolContext& ctx, int button, int mods) {
     if (button != GLFW_MOUSE_BUTTON_LEFT) return;
     if (!ctx.selection || ctx.selection->current().isEmpty()) return;
-    if (!ctx.camera) return;
+    if (!ctx.scene || !ctx.camera) return;
 
     m_gizmo.setMode(GizmoMode::Scale);
+    glm::vec3 center = ctx.selection->selectionCenter(*ctx.scene);
+    m_gizmo.setPosition(center);
 
     glm::mat4 invProj = glm::inverse(ctx.camera->projection());
     glm::mat4 invView = glm::inverse(ctx.camera->view());
@@ -50,14 +57,27 @@ void ScaleTool::onMouseDown(const ToolContext& ctx, int button, int mods) {
     m_activeAxis = static_cast<int>(axis);
     m_dragging = true;
     m_scaleFactor = 1.0f;
-    m_originalScale = glm::vec3(1.0f); // TODO: read from entity transform
+
+    // Store original scales from selected entities
+    const auto& selectedEntities = ctx.selection->current().entities;
+    if (!selectedEntities.empty()) {
+        EntityID firstId = *selectedEntities.begin();
+        Entity* first = ctx.scene->getEntity(firstId);
+        if (first) {
+            auto* tc = first->getComponent<TransformComponent>();
+            if (tc) {
+                m_originalScale = tc->scale;
+            }
+        }
+    }
+
     m_snapping = (mods & GLFW_MOD_CONTROL) != 0;
     m_prevMousePos = ctx.mousePos;
 }
 
 void ScaleTool::onMouseMove(const ToolContext& ctx) {
     if (!m_dragging || m_activeAxis < 0) return;
-    if (!ctx.camera) return;
+    if (!ctx.camera || !ctx.scene || !ctx.selection) return;
 
     glm::mat4 invProj = glm::inverse(ctx.camera->projection());
     glm::mat4 invView = glm::inverse(ctx.camera->view());
@@ -82,36 +102,70 @@ void ScaleTool::onMouseMove(const ToolContext& ctx) {
         m_scaleFactor = std::max(m_scaleFactor, m_snapSize);
     }
 
-    // TODO: Apply scale to selected entities' transforms once
-    // the Transform component is implemented.
-    // Scale should be applied along the axis defined by m_activeAxis.
-    (void)axis;
+    // Apply scale to selected entities
+    const auto& selectedEntities = ctx.selection->current().entities;
+    for (EntityID entityId : selectedEntities) {
+        Entity* entity = ctx.scene->getEntity(entityId);
+        if (!entity) continue;
+
+        auto* tc = entity->getComponent<TransformComponent>();
+        if (!tc) continue;
+
+        // Reset to original scale first
+        tc->scale = m_originalScale;
+
+        // Apply scale along the selected axis
+        tc->scale[m_activeAxis] *= m_scaleFactor;
+    }
+
     (void)rayOrigin;
     (void)rayDir;
+    (void)axis;
 }
 
 void ScaleTool::onMouseUp(const ToolContext& ctx, int button, int mods) {
     if (button != GLFW_MOUSE_BUTTON_LEFT) return;
 
-    if (m_dragging) {
-        // TODO: Create a TransformCommand for undo/redo
+    if (m_dragging && ctx.scene && ctx.selection && ctx.commands && std::abs(m_scaleFactor - 1.0f) > 0.01f) {
+        std::vector<TransformCommand::EntityTransform> transforms;
+
+        const auto& selectedEntities = ctx.selection->current().entities;
+        for (EntityID entityId : selectedEntities) {
+            Entity* entity = ctx.scene->getEntity(entityId);
+            if (!entity) continue;
+
+            auto* tc = entity->getComponent<TransformComponent>();
+            if (!tc) continue;
+
+            TransformCommand::EntityTransform t;
+            t.id = entityId;
+            t.oldPosition = tc->position;
+            t.oldRotation = tc->rotation;
+            t.oldScale = m_originalScale;
+            t.newPosition = tc->position;
+            t.newRotation = tc->rotation;
+            t.newScale = tc->scale;
+
+            transforms.push_back(t);
+        }
+
+        if (!transforms.empty()) {
+            auto cmd = std::make_shared<TransformCommand>(ctx.scene, transforms);
+            ctx.commands->execute(cmd);
+        }
     }
 
     m_dragging = false;
     m_activeAxis = -1;
     m_scaleFactor = 1.0f;
-    (void)ctx;
     (void)mods;
 }
 
 void ScaleTool::onRender(const ToolContext& ctx) {
     if (!ctx.selection || ctx.selection->current().isEmpty()) return;
+    if (!ctx.renderer) return;
 
-    // TODO: Render scale handles at the gizmo position.
-    // Three axis lines with small cubes at the endpoints:
-    // red cube on X, green on Y, blue on Z.
-    // Highlight the active axis during a drag.
-    (void)ctx;
+    ctx.renderer->drawGizmo(m_gizmo.position(), static_cast<int>(GizmoMode::Scale), m_activeAxis);
 }
 
 } // namespace PixellentModeler

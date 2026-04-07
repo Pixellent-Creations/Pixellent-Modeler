@@ -1,4 +1,7 @@
 #include "PixellentModeler/Selection/SelectionManager.hpp"
+#include "PixellentModeler/Scene/Scene.hpp"
+#include "PixellentModeler/Scene/Entity.hpp"
+#include "PixellentModeler/Scene/TransformComponent.hpp"
 
 namespace PixellentModeler {
 
@@ -176,6 +179,32 @@ void SelectionManager::notifyChanged() {
     // TODO: Dispatch a SelectionChangedEvent through m_dispatcher when
     // the EventDispatcher system is implemented.
     (void)m_dispatcher;
+}
+
+glm::vec3 SelectionManager::selectionCenter(Scene& scene) const {
+    if (m_selection.entities.empty()) {
+        return glm::vec3(0.0f);
+    }
+
+    glm::vec3 center(0.0f);
+    size_t count = 0;
+
+    for (EntityID entityId : m_selection.entities) {
+        Entity* entity = scene.getEntity(entityId);
+        if (!entity) continue;
+
+        auto* tc = entity->getComponent<TransformComponent>();
+        if (!tc) continue;
+
+        center += tc->position;
+        count++;
+    }
+
+    if (count > 0) {
+        return center / static_cast<float>(count);
+    }
+
+    return glm::vec3(0.0f);
 }
 
 } // namespace PixellentModeler
