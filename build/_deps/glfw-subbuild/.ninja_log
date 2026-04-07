@@ -1,0 +1,21 @@
+# ninja log v7
+137	515	7972804280000000	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-mkdir	2fbe3c83f69ab609
+137	515	7972804280000000	D:/pixellent3dmodeling/Pixellent-Modeler/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-mkdir	2fbe3c83f69ab609
+565	36040	7972804640000000	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-download	6d78a2bf5180de33
+565	36040	7972804640000000	D:/pixellent3dmodeling/Pixellent-Modeler/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-download	6d78a2bf5180de33
+36040	37007	7972804640000000	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-update	ef5ffe17f6c92618
+36040	37007	7972804640000000	D:/pixellent3dmodeling/Pixellent-Modeler/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-update	ef5ffe17f6c92618
+37007	37248	7972804660000000	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-patch	5c0608bcf0555190
+37007	37248	7972804660000000	D:/pixellent3dmodeling/Pixellent-Modeler/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-patch	5c0608bcf0555190
+37248	37496	7972804660000000	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-configure	8ed6dd9d289a7ae5
+37248	37496	7972804660000000	D:/pixellent3dmodeling/Pixellent-Modeler/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-configure	8ed6dd9d289a7ae5
+37496	37778	7972804660000000	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-build	2a04fe7ec17a4963
+37496	37778	7972804660000000	D:/pixellent3dmodeling/Pixellent-Modeler/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-build	2a04fe7ec17a4963
+37778	38075	7972804660000000	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-install	21cf3cead0261a08
+37778	38075	7972804660000000	D:/pixellent3dmodeling/Pixellent-Modeler/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-install	21cf3cead0261a08
+38075	38380	7972804660000000	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-test	b1e16cf1dda826ca
+38075	38380	7972804660000000	D:/pixellent3dmodeling/Pixellent-Modeler/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-test	b1e16cf1dda826ca
+38380	38724	7972804660000000	CMakeFiles/glfw-populate-complete	78ebdb6bd0343ec
+38380	38724	7972804660000000	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-done	78ebdb6bd0343ec
+38380	38724	7972804660000000	D:/pixellent3dmodeling/Pixellent-Modeler/build/_deps/glfw-subbuild/CMakeFiles/glfw-populate-complete	78ebdb6bd0343ec
+38380	38724	7972804660000000	D:/pixellent3dmodeling/Pixellent-Modeler/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-done	78ebdb6bd0343ec

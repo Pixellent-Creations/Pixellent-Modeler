@@ -1,5 +1,4 @@
-#include <iostream>
-#include "PixellentModeler/Application.hpp"
+#include "PixellentModeler/Core/Application.hpp"
 
 int main() {
     PixellentModeler::Application app;

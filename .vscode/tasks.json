@@ -4,15 +4,14 @@
         {
             "label": "CMake: Configure",
             "type": "shell",
-            "command": "cmake",
+            "command": "cmd.exe",
             "args": [
-                "-S", "${workspaceFolder}",
-                "-B", "${workspaceFolder}/build",
-                "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
+                "/c",
+                "set PATH=C:\\Users\\user\\AppData\\Local\\Microsoft\\WinGet\\Packages\\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\\mingw64\\bin;C:\\Program Files\\CMake\\bin;%PATH% && cmake -S ${workspaceFolder} -B ${workspaceFolder}/build -G Ninja -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ -DCMAKE_MAKE_PROGRAM=ninja -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
             ],
             "group": {
                 "kind": "build",
-                "isDefault": true
+                "isDefault": false
             },
             "presentation": {
                 "reveal": "always"
@@ -22,17 +21,35 @@
         {
             "label": "CMake: Build",
             "type": "shell",
-            "command": "cmake",
+            "command": "cmd.exe",
             "args": [
-                "--build", "${workspaceFolder}/build",
-                "--config", "Debug"
+                "/c",
+                "set PATH=C:\\Users\\user\\AppData\\Local\\Microsoft\\WinGet\\Packages\\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\\mingw64\\bin;C:\\Program Files\\CMake\\bin;%PATH% && cmake --build ${workspaceFolder}/build"
             ],
-            "group": "build",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
             "presentation": {
                 "reveal": "always"
             },
             "dependsOn": "CMake: Configure",
             "problemMatcher": ["$gcc"]
+        },
+        {
+            "label": "Run",
+            "type": "shell",
+            "command": "cmd.exe",
+            "args": [
+                "/c",
+                "set PATH=C:\\Users\\user\\AppData\\Local\\Microsoft\\WinGet\\Packages\\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\\mingw64\\bin;%PATH% && ${workspaceFolder}\\build\\PixellentModeler.exe"
+            ],
+            "group": "test",
+            "presentation": {
+                "reveal": "always"
+            },
+            "dependsOn": "CMake: Build",
+            "problemMatcher": []
         }
     ]
 }

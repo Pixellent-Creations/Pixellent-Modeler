@@ -1,0 +1,21 @@
+# ninja log v7
+192	563	7972811980000000	stb-populate-prefix/src/stb-populate-stamp/stb-populate-mkdir	16ac8672887c1a5a
+192	563	7972811980000000	D:/pixellent3dmodeling/Pixellent-Modeler/build/_deps/stb-subbuild/stb-populate-prefix/src/stb-populate-stamp/stb-populate-mkdir	16ac8672887c1a5a
+571	46875	7972812440000000	stb-populate-prefix/src/stb-populate-stamp/stb-populate-download	1534c61a9b60396e
+571	46875	7972812440000000	D:/pixellent3dmodeling/Pixellent-Modeler/build/_deps/stb-subbuild/stb-populate-prefix/src/stb-populate-stamp/stb-populate-download	1534c61a9b60396e
+46875	54116	7972812440000000	stb-populate-prefix/src/stb-populate-stamp/stb-populate-update	7b6ebb25468f966a
+46875	54116	7972812440000000	D:/pixellent3dmodeling/Pixellent-Modeler/build/_deps/stb-subbuild/stb-populate-prefix/src/stb-populate-stamp/stb-populate-update	7b6ebb25468f966a
+54116	54365	7972812520000000	stb-populate-prefix/src/stb-populate-stamp/stb-populate-patch	2c487b4d5521bbff
+54116	54365	7972812520000000	D:/pixellent3dmodeling/Pixellent-Modeler/build/_deps/stb-subbuild/stb-populate-prefix/src/stb-populate-stamp/stb-populate-patch	2c487b4d5521bbff
+54365	54704	7972812520000000	stb-populate-prefix/src/stb-populate-stamp/stb-populate-configure	d9652285cfa3ccd3
+54365	54704	7972812520000000	D:/pixellent3dmodeling/Pixellent-Modeler/build/_deps/stb-subbuild/stb-populate-prefix/src/stb-populate-stamp/stb-populate-configure	d9652285cfa3ccd3
+54704	54985	7972812520000000	stb-populate-prefix/src/stb-populate-stamp/stb-populate-build	c6134a6dbbf74bec
+54704	54985	7972812520000000	D:/pixellent3dmodeling/Pixellent-Modeler/build/_deps/stb-subbuild/stb-populate-prefix/src/stb-populate-stamp/stb-populate-build	c6134a6dbbf74bec
+54985	55235	7972812520000000	stb-populate-prefix/src/stb-populate-stamp/stb-populate-install	e5c78dfe66ad8959
+54985	55235	7972812520000000	D:/pixellent3dmodeling/Pixellent-Modeler/build/_deps/stb-subbuild/stb-populate-prefix/src/stb-populate-stamp/stb-populate-install	e5c78dfe66ad8959
+55235	55525	7972812540000000	stb-populate-prefix/src/stb-populate-stamp/stb-populate-test	2d01f69116397625
+55235	55525	7972812540000000	D:/pixellent3dmodeling/Pixellent-Modeler/build/_deps/stb-subbuild/stb-populate-prefix/src/stb-populate-stamp/stb-populate-test	2d01f69116397625
+55525	55861	7972812540000000	CMakeFiles/stb-populate-complete	7fc486cb11b60026
+55525	55861	7972812540000000	stb-populate-prefix/src/stb-populate-stamp/stb-populate-done	7fc486cb11b60026
+55525	55861	7972812540000000	D:/pixellent3dmodeling/Pixellent-Modeler/build/_deps/stb-subbuild/CMakeFiles/stb-populate-complete	7fc486cb11b60026
+55525	55861	7972812540000000	D:/pixellent3dmodeling/Pixellent-Modeler/build/_deps/stb-subbuild/stb-populate-prefix/src/stb-populate-stamp/stb-populate-done	7fc486cb11b60026

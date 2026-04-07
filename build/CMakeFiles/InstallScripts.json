@@ -1,0 +1,14 @@
+{
+	"InstallScripts" : 
+	[
+		"D:/pixellent3dmodeling/Pixellent-Modeler/build/cmake_install.cmake",
+		"D:/pixellent3dmodeling/Pixellent-Modeler/build/_deps/glfw-build/cmake_install.cmake",
+		"D:/pixellent3dmodeling/Pixellent-Modeler/build/_deps/glfw-build/src/cmake_install.cmake",
+		"D:/pixellent3dmodeling/Pixellent-Modeler/build/_deps/glm-build/cmake_install.cmake",
+		"D:/pixellent3dmodeling/Pixellent-Modeler/build/_deps/glm-build/glm/cmake_install.cmake",
+		"D:/pixellent3dmodeling/Pixellent-Modeler/build/_deps/glad-build/cmake_install.cmake",
+		"D:/pixellent3dmodeling/Pixellent-Modeler/build/_deps/json-build/cmake_install.cmake",
+		"D:/pixellent3dmodeling/Pixellent-Modeler/build/_deps/tinyobjloader-build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

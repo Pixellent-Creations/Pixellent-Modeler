@@ -1,0 +1,3 @@
+D:/pixellent3dmodeling/Pixellent-Modeler/build/_deps/glm-subbuild/CMakeFiles/glm-populate.dir
+D:/pixellent3dmodeling/Pixellent-Modeler/build/_deps/glm-subbuild/CMakeFiles/edit_cache.dir
+D:/pixellent3dmodeling/Pixellent-Modeler/build/_deps/glm-subbuild/CMakeFiles/rebuild_cache.dir

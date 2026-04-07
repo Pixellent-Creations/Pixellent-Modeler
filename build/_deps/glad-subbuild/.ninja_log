@@ -1,0 +1,21 @@
+# ninja log v7
+138	500	7972806760000000	glad-populate-prefix/src/glad-populate-stamp/glad-populate-mkdir	a32f129308d097f9
+138	500	7972806760000000	D:/pixellent3dmodeling/Pixellent-Modeler/build/_deps/glad-subbuild/glad-populate-prefix/src/glad-populate-stamp/glad-populate-mkdir	a32f129308d097f9
+513	21130	7972806980000000	glad-populate-prefix/src/glad-populate-stamp/glad-populate-download	621d16ac337711b3
+513	21130	7972806980000000	D:/pixellent3dmodeling/Pixellent-Modeler/build/_deps/glad-subbuild/glad-populate-prefix/src/glad-populate-stamp/glad-populate-download	621d16ac337711b3
+21130	22099	7972806980000000	glad-populate-prefix/src/glad-populate-stamp/glad-populate-update	b9b5bb42aa804379
+21130	22099	7972806980000000	D:/pixellent3dmodeling/Pixellent-Modeler/build/_deps/glad-subbuild/glad-populate-prefix/src/glad-populate-stamp/glad-populate-update	b9b5bb42aa804379
+22099	22327	7972806980000000	glad-populate-prefix/src/glad-populate-stamp/glad-populate-patch	771a3952277f3496
+22099	22327	7972806980000000	D:/pixellent3dmodeling/Pixellent-Modeler/build/_deps/glad-subbuild/glad-populate-prefix/src/glad-populate-stamp/glad-populate-patch	771a3952277f3496
+22327	22576	7972806980000000	glad-populate-prefix/src/glad-populate-stamp/glad-populate-configure	9347982c63269ec8
+22327	22576	7972806980000000	D:/pixellent3dmodeling/Pixellent-Modeler/build/_deps/glad-subbuild/glad-populate-prefix/src/glad-populate-stamp/glad-populate-configure	9347982c63269ec8
+22576	22871	7972806980000000	glad-populate-prefix/src/glad-populate-stamp/glad-populate-build	1cca5081e04d5a44
+22576	22871	7972806980000000	D:/pixellent3dmodeling/Pixellent-Modeler/build/_deps/glad-subbuild/glad-populate-prefix/src/glad-populate-stamp/glad-populate-build	1cca5081e04d5a44
+22871	23113	7972807000000000	glad-populate-prefix/src/glad-populate-stamp/glad-populate-install	e331ddaa396f4f6d
+22871	23113	7972807000000000	D:/pixellent3dmodeling/Pixellent-Modeler/build/_deps/glad-subbuild/glad-populate-prefix/src/glad-populate-stamp/glad-populate-install	e331ddaa396f4f6d
+23113	23388	7972807000000000	glad-populate-prefix/src/glad-populate-stamp/glad-populate-test	7f71f130036bbc84
+23113	23388	7972807000000000	D:/pixellent3dmodeling/Pixellent-Modeler/build/_deps/glad-subbuild/glad-populate-prefix/src/glad-populate-stamp/glad-populate-test	7f71f130036bbc84
+23388	23839	7972807000000000	CMakeFiles/glad-populate-complete	5d6e7c1231ca8d1
+23388	23839	7972807000000000	glad-populate-prefix/src/glad-populate-stamp/glad-populate-done	5d6e7c1231ca8d1
+23388	23839	7972807000000000	D:/pixellent3dmodeling/Pixellent-Modeler/build/_deps/glad-subbuild/CMakeFiles/glad-populate-complete	5d6e7c1231ca8d1
+23388	23839	7972807000000000	D:/pixellent3dmodeling/Pixellent-Modeler/build/_deps/glad-subbuild/glad-populate-prefix/src/glad-populate-stamp/glad-populate-done	5d6e7c1231ca8d1

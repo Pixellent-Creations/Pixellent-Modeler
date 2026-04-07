@@ -1,11 +1,8 @@
 #pragma once
 
 namespace PixellentModeler {
-
-// Forward declarations for core components
 class Application;
 class Scene;
-class Mesh;
 class Renderer;
-
+class Entity;
 } // namespace PixellentModeler
